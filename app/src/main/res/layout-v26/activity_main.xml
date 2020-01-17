@@ -24,7 +24,8 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="124dp"
-            app:srcCompat="@drawable/sale" />
+            app:srcCompat="@drawable/sale"
+            android:contentDescription="@string/sales" />
     </RelativeLayout>
 
     <TextView
@@ -50,7 +51,7 @@
         android:layout_height="100dp"
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/guitar"
-        android:contentDescription="TODO" />
+        android:contentDescription="@string/guitar" />
 
 
     <RelativeLayout
