@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         createMap();
 
     }
-    @Nullable
+
     void createSpinner(){
         spinner=findViewById(R.id.spinner);
         spinner.setOnItemSelectedListener(this);
