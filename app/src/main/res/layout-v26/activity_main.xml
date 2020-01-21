@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:hint="@string/your_name"
         android:ems="10"
+        android:maxLength="50"
         android:inputType="textPersonName"
         android:text="@string/your_name"
         android:autofillHints="">
