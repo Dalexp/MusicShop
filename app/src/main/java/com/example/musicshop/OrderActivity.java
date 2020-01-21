@@ -19,7 +19,10 @@ public class OrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
 
+        showOrder();
+    }
 
+    void showOrder(){
         Intent receivedOrderIntent = getIntent();
         String userName = receivedOrderIntent.getStringExtra("userNameForIntent");
         String goodsName = receivedOrderIntent.getStringExtra("goodsName");
@@ -28,10 +31,10 @@ public class OrderActivity extends AppCompatActivity {
         double orderPrice = receivedOrderIntent.getDoubleExtra("orderPrice",0.0);
 
         emailText="Customer name: " + userName + "\n"+
-                     "Goods name: " + goodsName + "\n" +
-                     "Quantity: "+ quantity + "\n" +
-                     "Price: "+ price+ "\n" +
-                     "Order Price:" +orderPrice;
+                "Goods name: " + goodsName + "\n" +
+                "Quantity: "+ quantity + "\n" +
+                "Price: "+ price+ "\n" +
+                "Order Price:" +orderPrice;
 
         TextView orderTextView = findViewById(R.id.orderTextView);
         orderTextView.setText(emailText);
