@@ -1,7 +1,11 @@
 package com.example.musicshop;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -9,6 +13,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -122,26 +128,53 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
+    @SuppressLint("WrongConstant")
     public void addToCart(View view) {
+
 
         Order order =new Order();
 
         order.userName=userNameEditText.getText().toString();
 
-        order.goodsName = goodsName;
+        if(!order.userName.equals("")){
 
-        order.quantity=quantity;
+            order.goodsName = goodsName;
 
-        order.price=price;
+            order.quantity=quantity;
+            if(quantity!=0){
 
-        order.orderPrice=quantity*price;
+                order.price=price;
 
-        Intent orderIntent = new Intent(MainActivity.this,OrderActivity.class);
-        orderIntent.putExtra("userNameForIntent",order.userName);
-        orderIntent.putExtra("goodsName",order.goodsName);
-        orderIntent.putExtra("quantity",order.quantity);
-        orderIntent.putExtra("price",order.price);
-        orderIntent.putExtra("orderPrice",order.orderPrice);
-        startActivity(orderIntent);
+                order.orderPrice=quantity*price;
+                Intent orderIntent = new Intent(MainActivity.this,OrderActivity.class);
+                orderIntent.putExtra("userNameForIntent",order.userName);
+                orderIntent.putExtra("goodsName",order.goodsName);
+                orderIntent.putExtra("quantity",order.quantity);
+                orderIntent.putExtra("price",order.price);
+                orderIntent.putExtra("orderPrice",order.orderPrice);
+                startActivity(orderIntent);
+            }else {
+                Toast zeroQuantity=Toast.makeText(getApplicationContext(),
+                        "Please, add product!",
+                        Toast.LENGTH_LONG);
+                zeroQuantity.setGravity(Gravity.CENTER,0,+550);
+                zeroQuantity.show();
+            }
+
+
+        }else{
+            Toast zeroEditText=Toast.makeText(getApplicationContext(),
+                    "Please, write Your Name!",
+                    Toast.LENGTH_LONG);
+            zeroEditText.setGravity(Gravity.CENTER,0,+550);
+            zeroEditText.show();
+        }
+
+
+    }
+
+    public void clearEditText(View view) {
+        userNameEditText.setText("");
+
     }
 }
